@@ -1,0 +1,13 @@
+{
+    "name": "jensramakers/money-transformer",
+    "homepage": "https://github.com/PS222407/MoneyTransformer",
+    "description": "Transforms integers to readable moneystring or the other way around and more",
+    "autoload": {
+        "psr-0": {
+            "MoneyTransformer": "src"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}
