@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Traits;
-
 trait MoneyTransformer
 {
-    public function moneyMollie(int $price): string
+    public function moneyMollie($price): string
     {
-        return $this->moneyView(price: $price, seperator: '.', decimalsReplacement: '00', threeDigitSeperator: '', currencySymbol: '', spaceAfterSymbol: false, symbolAtEnd: false);
+
+        return $this->moneyView(price: (int)round($price), seperator: '.', decimalsReplacement: '00', threeDigitSeperator: '', currencySymbol: '', spaceAfterSymbol: false, symbolAtEnd: false);
     }
 
-    public function percentageView(int $percentage): string
+    public function percentageView($percentage): string
     {
-        return $this->moneyView(price: $percentage, seperator: ',', decimalsReplacement: '00', threeDigitSeperator: '', currencySymbol: '%', spaceAfterSymbol: true, symbolAtEnd: false);
+        return $this->moneyView(price: (int)round($percentage), seperator: ',', decimalsReplacement: '00', threeDigitSeperator: '', currencySymbol: '%', spaceAfterSymbol: true, symbolAtEnd: false);
     }
 
     /**
@@ -39,9 +38,9 @@ trait MoneyTransformer
      * @param integer $price price in integer (925 = 9.25 EUR)
      * @return string
      */
-    public function moneyFB(int $price): string
+    public function moneyFB($price): string
     {
-        return $this->moneyIso4217($price);
+        return $this->moneyIso4217((int)round($price));
     }
 
     /**
@@ -49,14 +48,14 @@ trait MoneyTransformer
      * @param integer $price price in integer (925 = 9.25 EUR)
      * @return string
      */
-    public function moneyGoogle(int $price): string
+    public function moneyGoogle($price): string
     {
-        return $this->moneyIso4217($price);
+        return $this->moneyIso4217((int)round($price));
     }
 
-    public function moneyIso4217(int $price): string
+    public function moneyIso4217($price): string
     {
-        $priceStr = strval($price);
+        $priceStr = strval((int)round($price));
         $arr = str_split($priceStr);
 
         if (count($arr) < 3) {
